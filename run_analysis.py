@@ -72,7 +72,14 @@ print(f'''
 ''')
 
 
-final_report['percent_of_category_sales'] = final_report.groupby("category")["units_sold"].transform("sum")
+total_for_each_category = final_report.groupby("category")["units_sold"].transform("sum")
+total_for_each_category.name = "Cat_T_Sales"
+
+
+final_report["Category Total Sales"] = total_for_each_category
+
+
+final_report['percent_of_category_sales'] = (final_report["units_sold"] / total_for_each_category).mul(100).round(2).map("{}%".format)
 
 high_performers = final_report.groupby("category").filter(
     lambda x: x["units_sold"].sum() > 150
@@ -90,3 +97,4 @@ print(f'''
 
 {high_performers}
 ''')
+
