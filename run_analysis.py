@@ -72,3 +72,21 @@ print(f'''
 ''')
 
 
+final_report['percent_of_category_sales'] = final_report.groupby("category")["units_sold"].transform("sum")
+
+high_performers = final_report.groupby("category").filter(
+    lambda x: x["units_sold"].sum() > 150
+)
+
+
+
+print(f'''
+============================= Final Report with "percent_of_category_sales" =============================
+      
+{final_report}
+
+
+============================= High Perfromers =============================
+
+{high_performers}
+''')
