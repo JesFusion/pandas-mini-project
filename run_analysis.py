@@ -1,13 +1,13 @@
 import pandas as pd
 
-# Dataset 1: Sales for Jan
+# Dataset 1: Sales for January
 sales_jan = {
     'product_id': ['P101', 'P102', 'P103'],
     'units_sold': [50, 80, 120]
 }
 df_jan = pd.DataFrame(sales_jan)
 
-# Dataset 2: Sales for Feb
+# Dataset 2: Sales for February
 sales_feb = {
     'product_id': ['P101', 'P103', 'P104'],
     'units_sold': [55, 130, 20]
